@@ -88,9 +88,9 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList,callback) {
-  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  // return callback(numberList.reduce(reducer));
-  return callback(numberList);
+  // const reducer = 
+  return callback(numberList.reduce((accumulator, currentValue) => accumulator + currentValue,0));
+  // return callback(numberList);
 }
 
 /**
@@ -136,10 +136,19 @@ function processProduct(num1, num2, callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
-}
+//come back to this one -------
+function processContains(item, list, callback) {
+  return callback(list.includes(item));
 
+ 
+  //figure out if item is in the list
+  // step 2 if item does exist, invoke callback passing true. 
+  //If item does not exist invoke callback passing false. Return result. returncallback (true else return false. )
+  // 
+
+
+}
+//-----------------------
 /**
  * ### Challenge `processDuplicateFree`
  * THIS IS A STRETCH PROBLEM! ATTEMPT ONLY AFTER COMPLETING ALL NON-STRETCH CHALLENGES!
@@ -159,8 +168,8 @@ function processContains(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  return callback()
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -181,8 +190,8 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  
 }
 
 /**
@@ -252,7 +261,7 @@ function counterMaker() {
   // BROKEN CODE STARTS
   const count = 0;
   function counter() {
-    ++count
+    // ++count
   }
   // BROKEN CODE ENDS
 }
