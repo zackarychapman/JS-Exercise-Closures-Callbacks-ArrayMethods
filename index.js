@@ -15,8 +15,7 @@
  * should return 'foofoo'.
 */
 function processFirstItem(stringList, callback) {
-  // let n = stringList.length-1
-  return callback(stringList[stringList.length-1]);
+  return callback(stringList[0])
 }
 
 // ⭐️ Example Challenge END ⭐️
@@ -68,7 +67,7 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
-  return callback(stringList.length[]-1);
+  return callback(stringList[stringList.length-1]);
 }
 
 /**
@@ -88,8 +87,10 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList,callback) {
+  // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  // return callback(numberList.reduce(reducer));
+  return callback(numberList);
 }
 
 /**
@@ -110,8 +111,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  const product = num1 * num2;
+  return callback(product);
 }
 
 /**
