@@ -169,7 +169,7 @@ function processContains(item, list, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-  return callback()
+  return callback(list.filter((item,index) => {list.indexOf(item), list.indexOf(item) === index } ))
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -191,9 +191,11 @@ function processDuplicateFree(list, callback) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
-  
-}
+  let names = runners.map((v) => `${v.last_name}, ${v.first_name}`);
 
+  return names;
+}//heres the answer to this one but I need to understand how .map works, and how is this (v) part working? 
+// Is (v) referencing the array? If so how? The runners array has no name or way to reference it, its just module.exports!?
 /**
  * ### Challenge `firstNamesAllCaps`
  * 
@@ -206,8 +208,8 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map((v) => v.first_name.toUpperCase());
 }
 
 /**
@@ -223,8 +225,8 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  return runners.filter(v => tShirtSize === v.shirt_size);
 }
 
 /**
@@ -237,8 +239,10 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  return runners.reduce(function myFunc(total, cv) {
+    return total + cv.donation;
+  } ,0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -257,15 +261,23 @@ function tallyUpDonations(/* CODE HERE */) {
  * counter() // should return 2
  * etc
 */
+
+// counter1 code
 function counterMaker() {
-  // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    // ++count
+  let count = 0;
+  return function counter() {
+    count++;
   }
-  // BROKEN CODE ENDS
 }
 
+const counter1 = counterMaker();
+
+// counter2 code
+let count = 0;
+
+function counter2() {
+  return count++;
+}
 /**
  * ### Challenge `counterMakerWithLimit`
  * 
@@ -286,9 +298,20 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(max) {
+  let count = 0;
+  
+  return function counterMaker() {
+    do {
+
+      if(count > max) {
+        count = 0;
+      }
+      return count++;
+    } while (count < max);
+  }
 }
+
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
